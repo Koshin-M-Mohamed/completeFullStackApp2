@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>To Do List</title>
+    <link
+      rel="stylesheet"
+      href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="page-header text-center">
+        <h1>Profile Page</h1>
+        <a href="/logout" class="btn btn-default btn-sm">Logout</a>
+      </div>
+    </div>
+
+    <div class="toDo">
+      <label for="search">Add an item</label>
+      <input type="text" name="search" id="toDo" />
+      <button id="btn">ADD</button>
+    </div>
+
+    <div class="searchResult"></div>
+    <h1>Your To Do's</h1>
+
+    <div class="result">
+      <% for(var i=0; i<result.length; i++) {%>
+       
+          <div class="todo">
+            <h5 ><%= result[i].todo %></h5>
+           
+            <button id="delete" data-todo="<%= result[i].todo %>">Delete</button>
+          </div>
+         
+  
+         <% } %>
+    </div>
+    <script src="main.js"></script>
+  </body>
+</html>

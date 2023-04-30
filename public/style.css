@@ -1,0 +1,27 @@
+body {
+  padding-top: 80px;
+  word-wrap: break-word;
+  background-color: rgb(184, 151, 237);
+  text-align: center;
+}
+img {
+  height: 200px;
+}
+
+.anime,
+.result {
+  text-align: center;
+}
+
+.result {
+  background-color: white;
+}
+
+.todo{
+  border: 1px solid royalblue;
+ 
+}
+
+button{
+  margin: 10px;
+}
