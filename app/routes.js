@@ -9,7 +9,7 @@ module.exports = function (app, passport, db) {
   // PROFILE SECTION =========================
   app.get("/profile", isLoggedIn, function (req, res) {
     db.collection("todo")
-      .find({ email: req.user.local.email})
+      .find({ email: req.user.local.email })
       .toArray((err, result) => {
         if (err) return console.log(err);
         res.render("profile.ejs", {
@@ -31,7 +31,11 @@ module.exports = function (app, passport, db) {
 
   app.post("/addItem", (req, res) => {
     db.collection("todo").save(
-      { todo: req.body.todo, email: req.user.local.email },
+      {
+        todo: req.body.todo,
+        email: req.user.local.email,
+        status: "incomplete",
+      },
       (err, result) => {
         if (err) return console.log(err);
         console.log("saved to database");
@@ -40,20 +44,31 @@ module.exports = function (app, passport, db) {
     );
   });
 
-  // app.put('/messages', (req, res) => {
-  //   db.collection('messages')
-  //   .findOneAndUpdate({name: req.body.name, msg: req.body.msg}, {
-  //     $set: {
-  //       thumbUp:req.body.thumbUp + 1
-  //     }
-  //   }, {
-  //     sort: {_id: -1},
-  //     upsert: true
-  //   }, (err, result) => {
-  //     if (err) return res.send(err)
-  //     res.send(result)
-  //   })
-  // })
+  app.put("/update", (req, res) => {
+    let newStatus =
+      req.body.status === "incomplete" ? "complete" : "incomplete";
+
+    db.collection("todo").findOneAndUpdate(
+      {
+        todo: req.body.todo,
+        email: req.user.local.email,
+        status: req.body.status,
+      },
+      {
+        $set: {
+          status: newStatus,
+        },
+      },
+      {
+        sort: { _id: -1 },
+        upsert: true,
+      },
+      (err, result) => {
+        if (err) return res.send(err);
+        res.send(result);
+      }
+    );
+  });
 
   app.delete("/deleteItem", (req, res) => {
     db.collection("todo").findOneAndDelete(

@@ -1,27 +1,38 @@
-body {
-  padding-top: 80px;
-  word-wrap: break-word;
-  background-color: rgb(184, 151, 237);
+.hero {
+  background-image: url("https://startinfinity.s3.us-east-2.amazonaws.com/production/blog/post/27/main/hxz0RhMzDeHogUZK0JNA82JabI3IstKUUbYB3dD8.png");
+  background-size: cover;
+  background-position: center;
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   text-align: center;
 }
-img {
-  height: 200px;
+.hero .container {
+  background-color: rgba(243, 232, 232, 0.7);
+  padding: 10px;
+  border-radius: 10%;
 }
 
-.anime,
-.result {
+footer {
+  background-color: #f8f9fa;
+  padding: 20px 0;
   text-align: center;
 }
 
-.result {
-  background-color: white;
+footer a {
+  color: #6c757d;
+  text-decoration: none;
 }
 
-.todo{
-  border: 1px solid royalblue;
- 
+footer a:hover {
+  color: #343a40;
 }
 
-button{
-  margin: 10px;
+.navbar {
+  background-color: #f8f9fa;
+}
+
+.d-grid {
+  text-align: center;
 }
